@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
-import { api } from "@/shared/api/client";
+import { api, mediaUrl } from "@/shared/api/client";
 import { formatEth } from "@/shared/utils/eth";
 import { Button } from "@/shared/ui/button";
 import { Skeleton } from "@/shared/ui/skeleton";
@@ -94,7 +94,7 @@ export function HomePage() {
               EXPLORAR →
             </button>
           </div>
-          <img src={query.data?.featured?.images[0]} alt="" className="h-24 w-24 rounded-2xl object-cover" />
+          <img src={mediaUrl(query.data?.featured?.images[0])} alt="" className="h-24 w-24 rounded-2xl object-cover" />
         </div>
       </section>
       <section className="hidden items-center gap-8 md:grid md:grid-cols-2">
@@ -117,7 +117,7 @@ export function HomePage() {
           <Skeleton className="aspect-square w-full" />
         ) : (
           <img
-            src={query.data?.featured?.images[0]}
+            src={mediaUrl(query.data?.featured?.images[0])}
             alt={query.data?.featured?.name ?? "NFT em destaque"}
             className="aspect-square w-full rounded-2xl object-cover"
           />
@@ -237,7 +237,7 @@ export function HomePage() {
               {query.data?.items.map((nft) => (
                 <li key={nft.id}>
                   <Link to="/nft/$nftId" params={{ nftId: nft.id }} className="relative block">
-                    <img src={nft.images[0]} alt={nft.name} className="aspect-square w-full rounded-xl object-cover" />
+                    <img src={mediaUrl(nft.images[0])} alt={nft.name} className="aspect-square w-full rounded-xl object-cover" />
                     {nft.name.includes("Ivory") || nft.name.includes("Neon") ? (
                       <span className="absolute left-2 top-2 rounded bg-kurio-orange px-2 py-0.5 text-[10px] font-semibold text-black">RARO</span>
                     ) : null}
