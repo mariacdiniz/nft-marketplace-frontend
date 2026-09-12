@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ArrowLeft, Heart, Search, ShoppingBag, Star } from "lucide-react";
-import { api, apiError } from "@/shared/api/client";
+import { api, apiError, mediaUrl } from "@/shared/api/client";
 import { formatEth } from "@/shared/utils/eth";
 import { Button } from "@/shared/ui/button";
 import { Skeleton } from "@/shared/ui/skeleton";
@@ -99,11 +99,11 @@ export function NftDetailPage() {
         <div className="flex gap-3">
           <div className="hidden w-16 flex-col gap-2 md:flex">
             {nft.images.map((src, i) => (
-              <img key={i} src={src} alt="" className="rounded-lg border border-line object-cover" />
+              <img key={i} src={mediaUrl(src)} alt="" className="rounded-lg border border-line object-cover" />
             ))}
           </div>
           <div className="relative flex-1">
-            <img src={nft.images[0]} alt={nft.name} className="w-full rounded-2xl object-cover" />
+            <img src={mediaUrl(nft.images[0])} alt={nft.name} className="w-full rounded-2xl object-cover" />
             <span className="absolute right-3 top-3 hidden rounded-full bg-black/40 p-2 md:inline-flex" aria-hidden>
               <Search size={16} />
             </span>
