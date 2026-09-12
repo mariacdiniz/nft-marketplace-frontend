@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { X } from "lucide-react";
-import { api } from "@/shared/api/client";
+import { api, mediaUrl } from "@/shared/api/client";
 import { formatEth } from "@/shared/utils/eth";
 import { Button } from "@/shared/ui/button";
 import type { Order } from "@/types";
@@ -66,7 +66,7 @@ export function ConfirmationPage() {
           {order.items.map((i) => (
             <li key={`${i.nftId}-${i.editionId}`} className="grid grid-cols-[1fr_auto_auto] items-center gap-2 text-sm">
               <div className="flex items-center gap-2">
-                <img src={i.image} alt={i.name} className="h-10 w-10 rounded-md object-cover" />
+                <img src={mediaUrl(i.image)} alt={i.name} className="h-10 w-10 rounded-md object-cover" />
                 <div>
                   <p>{i.name}</p>
                   <p className="text-[11px] text-kurio-dim">ID do token: {i.tokenId}</p>
