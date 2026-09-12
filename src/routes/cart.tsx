@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Trash2 } from "lucide-react";
-import { api, apiError } from "@/shared/api/client";
+import { api, apiError, mediaUrl } from "@/shared/api/client";
 import { formatEth } from "@/shared/utils/eth";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
@@ -124,7 +124,7 @@ export function CartPage() {
               {query.data?.cart.items.map((item) => (
                 <li key={item.id} className="grid items-center gap-3 rounded-xl bg-card p-3 md:grid-cols-[1fr_100px_140px_100px_40px]">
                   <div className="flex items-center gap-3">
-                    <img src={item.image} alt={item.name} className="h-14 w-14 rounded-lg object-cover" />
+                    <img src={mediaUrl(item.image)} alt={item.name} className="h-14 w-14 rounded-lg object-cover" />
                     <div>
                       <p>{item.name}</p>
                       <p className="text-xs text-kurio-dim">ID do token: {item.tokenId}</p>
