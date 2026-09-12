@@ -1,0 +1,1 @@
+export { favoriteHandlers } from "./index";
