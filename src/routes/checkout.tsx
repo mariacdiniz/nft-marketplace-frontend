@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, MoreVertical } from "lucide-react";
-import { api, apiError } from "@/shared/api/client";
+import { api, apiError, mediaUrl } from "@/shared/api/client";
 import { formatEth } from "@/shared/utils/eth";
 import { Button } from "@/shared/ui/button";
 import { FieldError, Input, Label } from "@/shared/ui/input";
@@ -191,7 +191,7 @@ export function CheckoutPage() {
             {cartQ.data?.cart.items.map((i) => (
               <li key={i.id} className="flex items-center justify-between gap-3 text-sm">
                 <div className="flex items-center gap-3">
-                  <img src={i.image} alt={i.name} className="h-12 w-12 rounded-md object-cover" />
+                  <img src={mediaUrl(i.image)} alt={i.name} className="h-12 w-12 rounded-md object-cover" />
                   <div>
                     <p>{i.name}</p>
                     <p className="text-xs text-kurio-dim">ID do token: {i.tokenId}</p>
