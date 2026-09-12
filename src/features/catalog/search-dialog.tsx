@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { api } from "@/shared/api/client";
+import { api, mediaUrl } from "@/shared/api/client";
 import { formatEth } from "@/shared/utils/eth";
 import { Dialog } from "@/shared/ui/dialog";
 import type { CatalogResponse } from "@/types";
@@ -81,7 +81,7 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
                     void navigate({ to: "/nft/$nftId", params: { nftId: nft.id } });
                   }}
                 >
-                  <img src={nft.images[0]} alt="" className="h-12 w-12 rounded-md object-cover" />
+                  <img src={mediaUrl(nft.images[0])} alt="" className="h-12 w-12 rounded-md object-cover" />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm text-kurio-cream">{nft.name}</span>
                     <span className="block text-xs text-kurio-muted">
